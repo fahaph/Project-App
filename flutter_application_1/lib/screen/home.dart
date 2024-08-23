@@ -6,24 +6,42 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Home"),
-      ),
+      appBar: AppBar(title: Text("Home"),),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextButton(
-              onPressed:(){
 
+            TextButton(
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.blue,
+                foregroundColor: Colors.white,
+                elevation: 3
+              ),
+              onPressed:(){
             }, child: Text("Text Button")
             ),
             
             FilledButton(
+              style: FilledButton.styleFrom(
+                backgroundColor: Colors.blue,
+                foregroundColor: Colors.white,
+                elevation: 3
+              ),
               onPressed: (){
-
             }, child: Text("Filled Button")
             ),
+
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue,
+                foregroundColor: Colors.white,
+                elevation: 3
+              ),
+              onPressed: (){
+            }, child: Text("Elevated Button")
+            ),
+
           ],
         ),
       ),
