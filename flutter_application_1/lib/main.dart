@@ -7,7 +7,7 @@ void main(List<String> args) {
   runApp(MaterialApp(
     title: "Simple App",
     home: Scaffold(
-      body: Home(),
+      body: Menus(),
     ),
   ));
 }
