@@ -19,7 +19,7 @@ class Home extends StatelessWidget {
                 elevation: 3
               ),
               onPressed:(){
-            }, child: Text("Text Button")
+            }, child: Text("Text Button", style: TextStyle(fontWeight: FontWeight.bold),)
             ),
             
             FilledButton(
@@ -29,7 +29,7 @@ class Home extends StatelessWidget {
                 elevation: 3
               ),
               onPressed: (){
-            }, child: Text("Filled Button")
+            }, child: Text("Filled Button", style: TextStyle(fontWeight: FontWeight.bold),),
             ),
 
             ElevatedButton(
@@ -39,7 +39,7 @@ class Home extends StatelessWidget {
                 elevation: 3
               ),
               onPressed: (){
-            }, child: Text("Elevated Button")
+            }, child: Text("Elevated Button", style: TextStyle(fontWeight: FontWeight.bold),)
             ),
 
           ],
