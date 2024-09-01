@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter_application_1/Rate.dart';
+import 'package:flutter_application_1/rate.dart';
 
 class LatestRate extends StatefulWidget {
   const LatestRate({super.key});
@@ -43,9 +43,21 @@ class _LatestRateState extends State<LatestRate> {
               child: Text("Error: ${snapshot.error}"),
             );
           }
-          return Center(
-            child: Text("Rate: ${snapshot.data!.toString()}"),
-          );
+          else {
+            return ListView.builder(
+              itemCount: snapshot.data!.result!.length,
+              itemBuilder: (BuildContext context, int index) {
+                String? key = snapshot.data?.result!.keys.elementAt(index);
+                double? value = snapshot.data?.result![key];
+                String? strValue = value!.toString();
+                
+                return ListTile(
+                  title: Text(key!),
+                  subtitle: Text(strValue),
+                );
+              }
+            );
+          }
         } else {
           return Center(
             child: CircularProgressIndicator(),
