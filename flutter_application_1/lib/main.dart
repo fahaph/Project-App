@@ -1,13 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/screen/home.dart';
-import 'package:flutter_application_1/screen/menus.dart';
+import 'package:flutter_application_1/screen/latestRate.dart';
+import 'package:flutter_application_1/screen/convert.dart';
 
-void main(List<String> args) {
+void main() {
   runApp(MaterialApp(
-    title: "Simple App",
+    title: "Exchange Currency",
     home: Scaffold(
-      body: Menus(),
+      appBar: AppBar(
+        title: const Text("Exchange Currency"),
+      ),
+      body: const LatestRate(),
     ),
   ));
 }

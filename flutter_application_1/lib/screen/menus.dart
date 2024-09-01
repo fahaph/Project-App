@@ -2,9 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Menus extends StatefulWidget {
-
   const Menus({super.key});
-
   @override
   State<Menus> createState() => _MenusState();
 }
