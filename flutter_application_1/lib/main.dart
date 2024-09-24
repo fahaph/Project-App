@@ -84,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       const EdgeInsets.symmetric(vertical: 5, horizontal: 8),
                   child: ListTile(
                     title: Text(statement.title),
-                    subtitle: Text(DateFormat('dd MM yyyy hh:mm:ss').format(statement.date)),
+                    subtitle: Text(DateFormat('MM/dd/yyyy hh:mm:ss').format(statement.date)),
                     leading: CircleAvatar(
                       radius: 20,
                       child: FittedBox(
