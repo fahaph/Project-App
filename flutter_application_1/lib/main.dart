@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screen/form_screen.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_application_1/provider/transaction_provider.dart';
 
@@ -52,36 +53,42 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.primary,
-          title: Text(widget.title),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.add),
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return FormScreen();
-                }));
-              },
-            ),
-          ],
-        ),
-        body: Consumer(
-          builder: (context, TransactionProvider provider, Widget? child) {
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: Text(widget.title),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return FormScreen();
+              }));
+            },
+          )
+        ],
+      ),
+      body: Consumer<TransactionProvider>(
+        builder: (context, provider, Widget? child) {
+          if (provider.transactions.isEmpty) {
+            return const Center(
+              child: Text('ไม่มีรายการ'),
+            );
+          } else {
             return ListView.builder(
               itemCount: provider.transactions.length,
               itemBuilder: (context, index) {
+                var statement = provider.transactions[index];
                 return Card(
                   elevation: 5,
                   margin:
                       const EdgeInsets.symmetric(vertical: 5, horizontal: 8),
                   child: ListTile(
-                    title: Text(provider.transactions[index].title),
-                    subtitle: Text(provider.transactions[index].date.toString()),
+                    title: Text(statement.title),
+                    subtitle: Text(DateFormat('dd MM yyyy hh:mm:ss').format(statement.date)),
                     leading: CircleAvatar(
-                      radius: 30,
+                      radius: 20,
                       child: FittedBox(
-                        child: Text('${provider.transactions[index].amount}'),
+                        child: Text('${statement.amount}'),
                       ),
                     ),
                     trailing: IconButton(
@@ -92,9 +99,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
               },
             );
-          },
-        )
-        // This trailing comma makes auto-formatting nicer for build methods.
-        );
+          }
+        },
+      ),
+    );
   }
 }
